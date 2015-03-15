@@ -1,4 +1,4 @@
-T\ :sup:`t`\ by Udo Kasemets
+T\ :sup:`t` \  by Udo Kasemets
 ----------------------------
 
 Usage
