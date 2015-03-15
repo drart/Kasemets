@@ -19,29 +19,40 @@ function setfrequencyval(freq)
 
     var ff = f[count];
     
-    var total = 0;
+    var sum = 0;
     for (var i = 0 ; i < ff.length; i++)
     {
-        total += ff[i];
+        sum += ff[i];
     }
-    total = total/ff.length;
-    f[count+"val"] = total;
+    f[count+"average"] = sum / ff.length;
 
+    var result = sum;
     switch(count)
     {
         case 0: 
             totalcards++; 
             break;
         case 1:
-            total = total + f[count+"val"]; 
+            result = sum + ( f[0+"average"]*f[0].length ); 
+            break;
+        case 2:
+            result = sum + ( f[1+"average"]*f[1].length ); 
+            break;
+        case 3:
+            result = sum + ( f[2+"average"]*f[2].length ); 
+            break;
+        case 4:
+            result = sum + ( f[3+"average"]*f[3].length ); 
+            break;
         default: 
             break; 
     }
+    result = result / totalcards;
 
-    outlet (0, total);
+    outlet (0, result);
 }
 
-
+/*
 function setamplitudeval(amp)
 {
     if (typeof amp != 'number') 
@@ -65,6 +76,14 @@ function setamplitudeval(amp)
     
     outlet (0, total);
 }
+*/
+
+
+
+function donecards()
+{
+
+}
 
 /********************
  * Changing and Querying rounds
@@ -77,9 +96,8 @@ function nextround()
 
 function gotoround(val)
 {
-  //  post("fakdjfalj");
-//    if (typeof freq != 'number') 
- //       return; 
+    if (typeof freq != 'number') 
+        return; 
 
     count = val;
     totalcards = 0;
@@ -91,6 +109,7 @@ function gotoround(val)
 
 function whichround()
 {
+    post(count);
     outlet(0, count);
 }
 
