@@ -1,17 +1,17 @@
-var mywindow = new JitterObject("jit.window","ListenWindow");
-// turn off depth testing... we're using blending instead:
-mywindow.depthbuffer = 0; 
-mywindow.fsmenubar = 0;
-mywindow.hidecursor = 1;
-
 var mydata = {f:-2, i:-2, c:-2, i:-2}
 
-var myrender = new JitterObject("jit.gl.render","ListenWindow");
+//var myrender = new JitterObject("jit.gl.render","KassWindow");
 
-myrender.ortho = 2; 
-myrender.erase_color = [0,0,0,1]; 
+//myrender.ortho = 2; 
+//myrender.erase_color = [0,0,0,1]; 
 
-var sketch = new JitterObject("jit.gl.sketch", "ListenWindow");
+//var sketch = new JitterObject("jit.gl.sketch", "KassWindow");
+
+var sketch ;
+
+//myrender.drawto = "out-ctx";
+//sketch.drawTo = "out-ctx";
+
 
 /*
 // create an array of [jit.gl.gridshape] objects randomly arrayed across the window
@@ -29,8 +29,10 @@ for(var i=0;i<OBJECT_COUNT;i++) {
 	mysphere[i].blend_enable = 1;
 }
 */
-
-redraw();
+function init(){
+	
+	sketch = this.patcher.getnamed("sketcher");
+}
 
 function redraw()
 {
@@ -79,8 +81,11 @@ function redraw()
 		//post(x1);
 		//post(y1);	
 		
-		
-		
+		sketch.glcolor(1,0.3,0.3,1);
+		sketch.moveto(x1,-2,0);
+		sketch.lineto(x1, y1,0);		
+		sketch.moveto(x1,y1,0);
+		sketch.lineto(-2, y1,0);		
 	}
 	
 	sketch.glenable("line_stipple");
@@ -94,6 +99,8 @@ function redraw()
 	sketch.moveto(-2,mydata.i,0);
 	sketch.lineto( 2,mydata.i, 0);	
 }
+redraw.local = 1;
+redraw();
 
 function scalenums(val)
 {
@@ -138,15 +145,11 @@ function bang()
 {
 
 	// rendering block...
-	myrender.erase(); // erase the drawing context
-	myrender.drawclients(); // draw the client objects
-	myrender.swap(); // swap in the new drawing
-}
+	//myrender.erase(); // erase the drawing context
+	//myrender.drawclients(); // draw the client objects
+	//myrender.swap(); // swap in the new drawing
 
-function fullscreen(v) 
-// function to send the [jit.window] into fullscreen mode
-{
-	messnamed("jitter", "cursor", !v); // turns the cursor off :)
-	mywindow.fullscreen = v;
+	outlet(0, "bang");
+
 }
 
