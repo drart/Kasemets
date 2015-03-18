@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 69.0, 79.0, 925.0, 748.0 ],
+		"rect" : [ 534.0, 79.0, 1075.0, 776.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -70,7 +70,6 @@
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "" ],
 					"patching_rect" : [ 393.0, 157.0, 191.0, 22.0 ],
-					"presentation_rect" : [ 423.0, 158.0, 0.0, 0.0 ],
 					"style" : "",
 					"text" : "OSC-route /mccluhan /cage /fuller"
 				}
@@ -16114,7 +16113,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 758.0, 79.0, 808.0, 798.0 ],
+						"rect" : [ 406.0, 79.0, 1240.0, 933.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -16143,6 +16142,30 @@
 						"subpatcher_template" : "",
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-94",
+									"maxclass" : "newobj",
+									"numinlets" : 3,
+									"numoutlets" : 5,
+									"outlettype" : [ "signal", "signal", "signal", "signal", "list" ],
+									"patching_rect" : [ 539.0, 457.0, 61.0, 22.0 ],
+									"saved_object_attributes" : 									{
+										"notebase" : 0,
+										"notelist" : [ 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100 ],
+										"pitchdetection" : 0,
+										"quality" : "basic",
+										"reportlatency" : 0,
+										"retune" : 1,
+										"use_16bit" : [ 0 ],
+										"windowsize" : [ 64 ]
+									}
+,
+									"style" : "",
+									"text" : "retune~"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"comment" : "",
 									"id" : "obj-22",
 									"maxclass" : "inlet",
@@ -16150,7 +16173,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 251.0, 12.0, 30.0, 30.0 ],
-									"presentation_rect" : [ 251.0, 9.0, 0.0, 0.0 ],
 									"style" : ""
 								}
 
@@ -16164,7 +16186,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 141.0, 12.0, 30.0, 30.0 ],
-									"presentation_rect" : [ 143.0, 13.0, 0.0, 0.0 ],
 									"style" : ""
 								}
 
@@ -17153,6 +17174,15 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-94", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-65", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-13", 0 ],
 									"disabled" : 0,
 									"hidden" : 0,
@@ -17248,6 +17278,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"comment" : "",
@@ -17915,7 +17946,7 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 393.0, 280.0, 45.0, 45.0 ],
+					"patching_rect" : [ 393.0, 327.0, 45.0, 45.0 ],
 					"style" : ""
 				}
 

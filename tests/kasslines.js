@@ -4,6 +4,8 @@ mywindow.depthbuffer = 0;
 mywindow.fsmenubar = 0;
 mywindow.hidecursor = 1;
 
+var mydata = {f:-2, i:-2, c:-2, i:-2}
+
 var myrender = new JitterObject("jit.gl.render","ListenWindow");
 
 myrender.ortho = 2; 
@@ -28,44 +30,109 @@ for(var i=0;i<OBJECT_COUNT;i++) {
 }
 */
 
+redraw();
 
 function redraw()
 {
 	sketch.reset();
+
+	sketch.glcolor(1,1,1,1);
+	sketch.moveto(-2,mydata.a,0);
+	sketch.lineto( 2,mydata.a,0);	
+
+	sketch.glcolor(1,1,1,1);
+	sketch.moveto(mydata.f,-2,0);
+	sketch.lineto(mydata.f, 2,0);	
+
+	// Line1
+	sketch.moveto(2,mydata.i,0);
+	sketch.lineto(mydata.f, mydata.a,0);
+	// Line2
+	sketch.moveto(2,mydata.a,0);
+	sketch.lineto(mydata.c, mydata.i,0);
+	
+	/// -----------
+	/// intersection of ff/aa and ii/cc
+	/// -----------	
+	
+	var A1 = mydata.a-mydata.i;
+	var B1 = 2 - mydata.f;
+	var C1 = A1*2 + B1*mydata.i;
+	var A2 = mydata.i - mydata.a;
+	var B2 = 2 - mydata.c;
+	var C2 = A2*2 + B2*mydata.a;
+	var det = A1*B2 - A2*B1;
+	var x1,y1;
+	if (0 == det)
+	{// lines are parallel
+	}
+	else
+	{
+		x1 = (B2*C1 - B1*C2)/det;
+		y1 = (A1*C2 - A2*C1)/det;
+
+	}
+	/// -----------
+	
+	if ( !isNaN(x1) && !isNaN(y1) )
+	{
+		//post(x1);
+		//post(y1);	
+		
+		
+		
+	}
+	
+	sketch.glenable("line_stipple");
+	sketch.gllinestipple(1,1);
+	
+	sketch.glcolor(1,1,1,1);
+	sketch.moveto(mydata.c,-2,0);
+	sketch.lineto(mydata.c, 2,0);	
+
+	sketch.glcolor(1,1,1,1);
+	sketch.moveto(-2,mydata.i,0);
+	sketch.lineto( 2,mydata.i, 0);	
+}
+
+function scalenums(val)
+{
+	var temp = val;
+	if (temp > 10) temp = 10;
+	if (temp < 0) temp = 0;
+	
+	temp = temp / 5 -1;
+
+	return temp;	
 }
 
 function a(num)
 {
-	var temp = num;
-	if (temp > 10) temp = 10;
-	if (temp < 0) temp = 0;
+	mydata.a = scalenums(num);
 	
-	temp = temp / 5 -1;
-	
-	sketch.glenable("line_stipple");
-	sketch.gllinestipple(1,1);
-	sketch.glcolor(1,1,1,1);
-	sketch.moveto(temp,-2,0);
-	sketch.lineto(temp,2,0);	
+	redraw();
 }
-
 
 function i(num)
-{
-	var temp = num;
-	if (temp > 10) temp = 10;
-	if (temp < 0) temp = 0;
+{	
+	mydata.i = scalenums(num);
 	
-	temp = temp / 5 -1;
-	
-	sketch.glenable("line_stipple");
-	sketch.gllinestipple(1,1);
-	sketch.glcolor(1,1,1,1);
-	sketch.moveto(-2,temp,0);
-	sketch.lineto(2,temp,0);	
+	redraw();
 }
 
+function f(num)
+{	
+	mydata.f = scalenums(num);
+	
+	redraw();
+}
 
+function c(num)
+{	
+	mydata.c = scalenums(num);
+	
+	redraw();
+}
 
 function bang() 
 {
