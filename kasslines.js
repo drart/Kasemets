@@ -9,6 +9,7 @@ var xmin = -0.4;
 var xmax = .4;
 var ymin = -.4;
 var ymax = .4;
+var xoffset = 0;
 for ( var j = 1 ; j < jsarguments.length; j++)
 {	
 	if (j == 1 && typeof jsarguments[j] == "number") 
@@ -19,6 +20,8 @@ for ( var j = 1 ; j < jsarguments.length; j++)
 		ymin = jsarguments[j];
 	if (j == 4 && typeof jsarguments[j] == "number") 
 		ymax = jsarguments[j];		
+	if (j == 5 && typeof jsarguments[j] == "number") 
+		xoffset = jsarguments[j];		
 }
 
 function redraw()
@@ -31,19 +34,19 @@ function redraw()
 	sketch.reset();
 
 	sketch.glcolor(1,1,1,1);
-	sketch.moveto(xmin,mydata.a,0);
-	sketch.lineto(xmax,mydata.a,0);	
+	sketch.moveto(xoffset+xmin,mydata.a,0);
+	sketch.lineto(xoffset+xmax,mydata.a,0);	
 
 	sketch.glcolor(1,1,1,1);
-	sketch.moveto(mydata.f,ymin,0);
-	sketch.lineto(mydata.f,ymax,0);	
+	sketch.moveto(xoffset+mydata.f,ymin,0);
+	sketch.lineto(xoffset+mydata.f,ymax,0);	
 
 	// Line1
-	sketch.moveto(xmax,mydata.i,0);
-	sketch.lineto(mydata.f, mydata.a,0);
+	sketch.moveto(xoffset+xmax,mydata.i,0);
+	sketch.lineto(xoffset+mydata.f, mydata.a,0);
 	// Line2
-	sketch.moveto(xmax,mydata.a,0);
-	sketch.lineto(mydata.c, mydata.i,0);
+	sketch.moveto(xoffset+xmax,mydata.a,0);
+	sketch.lineto(xoffset+mydata.c, mydata.i,0);
 	
 	/// -----------
 	/// intersection of ff/aa and ii/cc
@@ -71,10 +74,10 @@ function redraw()
 	if ( !isNaN(x1) && !isNaN(y1) )
 	{	
 		sketch.glcolor(1,0.3,0.3,1);
-		sketch.moveto(x1,ymin,0);
-		sketch.lineto(x1, y1,0);		
-		sketch.moveto(x1,y1,0);
-		sketch.lineto(xmin, y1,0);		
+		sketch.moveto(xoffset+x1,ymin,0);
+		sketch.lineto(xoffset+x1, y1,0);		
+		sketch.moveto(xoffset+x1,y1,0);
+		sketch.lineto(xoffset+xmin, y1,0);		
 	}
 	
 	
@@ -85,11 +88,11 @@ function redraw()
 	sketch.gllinestipple(1,1);	
 	sketch.glcolor(1,1,1,1);
 	
-	sketch.moveto(mydata.c,ymin,0);
-	sketch.lineto(mydata.c,ymax,0);	
+	sketch.moveto(xoffset+mydata.c,ymin,0);
+	sketch.lineto(xoffset+mydata.c,ymax,0);	
 
-	sketch.moveto(xmin,mydata.i,0);
-	sketch.lineto( xmax,mydata.i, 0);	
+	sketch.moveto(xoffset+xmin,mydata.i,0);
+	sketch.lineto(xoffset+xmax,mydata.i, 0);	
 	
 	
 	sketch.glcolor(1,0.3,0.3,1);
@@ -138,6 +141,14 @@ function c(num)
 function erase()
 {
 	sketch.reset();
+}
+
+function random()
+{
+	a(Math.random()*10);
+	i(Math.random()*10);	
+	f(Math.random()*10);
+	c(Math.random()*10);		
 }
 
 function bang() 

@@ -110,7 +110,7 @@ function gotoround(val)
 function whichround()
 {
     post(count);
-    outlet(0, count);
+    outlet(1, count);
 }
 
 function clear()
