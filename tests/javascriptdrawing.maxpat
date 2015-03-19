@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 318.0, 79.0, 883.0, 913.0 ],
+		"rect" : [ 802.0, 79.0, 621.0, 913.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -670,14 +670,14 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 24.0, 287.0, 84.0, 22.0 ],
+					"patching_rect" : [ 24.0, 287.0, 172.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"filename" : "kasslines.js",
 						"parameter_enable" : 0
 					}
 ,
 					"style" : "",
-					"text" : "js kasslines.js"
+					"text" : "js kasslines.js -0.4 0.4 -0.4 0.4"
 				}
 
 			}
