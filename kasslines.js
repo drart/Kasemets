@@ -1,7 +1,7 @@
 var sketch = new JitterObject("jit.gl.sketch", "KassWindow");
-var myrender = new JitterObject("jit.gl.render","KassWindow");
-myrender.ortho = 2; 
-myrender.erase_color = [0,0,0,1]; 
+//var myrender = new JitterObject("jit.gl.render","KassWindow");
+//myrender.ortho = 2; 
+//myrender.erase_color = [0,0,0,1]; 
 sketch.line_width = 2;
 var mydata = {}
 
@@ -154,9 +154,9 @@ function random()
 function bang() 
 {
 	// rendering block...
-	myrender.erase(); // erase the drawing context
-	myrender.drawclients(); // draw the client objects
-	myrender.swap(); // swap in the new drawing
+//	myrender.erase(); // erase the drawing context
+//	myrender.drawclients(); // draw the client objects
+//	myrender.swap(); // swap in the new drawing
 
 	outlet(0, "bang");
 }
