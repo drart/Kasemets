@@ -11,8 +11,11 @@ function msg_int(ii)
 
 function bang()
 {
+	var myoutput = new Array();
+	myoutput.push("gotoround");
+	myoutput.push(round);
     if (round < 10 ) 
-    outlet(0, "gotoround " + round)
+    outlet(0, myoutput)
    round++;
 }
 

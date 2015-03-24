@@ -7,10 +7,13 @@ var c = {};
 var i = {};
 var totalcards = 0;
 
-f[count] = new Array();
-a[count] = new Array();
-c[count] = new Array();
-i[count] = new Array();
+for (var ttt = 0; ttt < 10; ttt++)
+{
+	f[ttt] = new Array();
+	a[ttt] = new Array();
+	c[ttt] = new Array();
+	i[ttt] = new Array();
+}
 
 function setfrequencyval(freq)
 {
@@ -22,9 +25,9 @@ function setfrequencyval(freq)
     var ff = f[count];
     
     var sum = 0;
-    for (var i = 0 ; i < ff.length; i++)
+    for (var t = 0 ; t < ff.length; t++)
     {
-        sum += ff[i];
+        sum += ff[t];
     }
     f[count+"average"] = sum / ff.length;
 
@@ -49,12 +52,12 @@ function setfrequencyval(freq)
         default: 
             break; 
     }
+	post(result);
     result = result / totalcards;
 
     outlet (0, result);
 }
 
-/*
 function setamplitudeval(amp)
 {
     if (typeof amp != 'number') 
@@ -62,28 +65,119 @@ function setamplitudeval(amp)
 
     a[count].push(amp);
 
-    var ff = a[count];
+    var aa = a[count];
     
-    var total = 0;
-    for (var i = 0 ; i < ff.length; i++)
+    var sum = 0;
+    for (var t = 0 ; t < aa.length; t++)
     {
-        total += ff[i];
+        sum += aa[t];
     }
-    total = total/ff.length;
+    a[count+"average"] = sum / aa.length;
 
-    if (0 != count)
+    var result = sum;
+    switch(count)
     {
-        totalcards++;
+        case 1:
+            result = sum + ( a[0+"average"]*a[0].length ); 
+            break;
+        case 2:
+            result = sum + ( a[1+"average"]*a[1].length ); 
+            break;
+        case 3:
+            result = sum + ( a[2+"average"]*a[2].length ); 
+            break;
+        case 4:
+            result = sum + ( a[3+"average"]*a[3].length ); 
+            break;
+        default: 
+            break; 
     }
-    
-    outlet (1, total);
+	//post(result);
+    result = result / totalcards;
+
+    outlet (1, result);
 }
-*/
 
-function donecards()
+function setcolourval(col)
 {
+    if (typeof col != 'number') 
+        return; 
 
+    c[count].push(col);
+
+    var cc = c[count];
+    
+    var sum = 0;
+    for (var t = 0 ; t < cc.length; t++)
+    {
+        sum += cc[t];
+    }
+    c[count+"average"] = sum / cc.length;
+
+    var result = sum;
+    switch(count)
+    {
+        case 1:
+            result = sum + ( c[0+"average"]*c[0].length ); 
+            break;
+        case 2:
+            result = sum + ( c[1+"average"]*c[1].length ); 
+            break;
+        case 3:
+            result = sum + ( c[2+"average"]*c[2].length ); 
+            break;
+        case 4:
+            result = sum + ( c[3+"average"]*c[3].length ); 
+            break;
+        default: 
+            break; 
+    }
+	//post(result);
+    result = result / totalcards;
+
+    outlet (2, result);
 }
+
+function setintensityval(tens)
+{
+    if (typeof tens != 'number') 
+        return; 
+
+    i[count].push(tens);
+
+    var ii = i[count];
+    
+    var sum = 0;
+    for (var t = 0 ; t < ii.length; t++)
+    {
+        sum += ii[t];
+    }
+    i[count+"average"] = sum / ii.length;
+
+    var result = sum;
+    switch(count)
+    {
+        case 1:
+            result = sum + ( i[0+"average"]*i[0].length ); 
+            break;
+        case 2:
+            result = sum + ( i[1+"average"]*i[1].length ); 
+            break;
+        case 3:
+            result = sum + ( i[2+"average"]*i[2].length ); 
+            break;
+        case 4:
+            result = sum + ( i[3+"average"]*i[3].length ); 
+            break;
+        default: 
+            break; 
+    }
+	//post(result);
+    result = result / totalcards;
+
+    outlet (3, result);
+}
+
 
 /********************
  * Changing and Querying rounds
@@ -96,22 +190,20 @@ function nextround()
 
 function gotoround(val)
 {
-    if (typeof freq != 'number') 
+    if (typeof val != 'number') 
         return; 
-
     count = val;
-    totalcards = 0;
-    f[count] = new Array();
-    a[count] = new Array();
-    c[count] = new Array();
-    i[count] = new Array();
+    //totalcards = 0;
+//    f[count] = new Array();
+//    a[count] = new Array();
+//    c[count] = new Array();
+//    i[count] = new Array();
 }
 
-/*function whichround()
+function whichround()
 {
     post(count);
-    outlet(1, count);
-}*/
+}
 
 function clear()
 {
@@ -121,4 +213,12 @@ function clear()
     a = {};
     c = {};
     i = {};
+	
+	for (var ttt = 0; ttt < 10; ttt++)
+	{
+		f[ttt] = new Array();
+		a[ttt] = new Array();
+		c[ttt] = new Array();
+		i[ttt] = new Array();
+	}
 }
