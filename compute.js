@@ -1,4 +1,4 @@
-outlets = 2;
+outlets = 4;
 
 var count = 0;
 var f = {};
@@ -76,11 +76,9 @@ function setamplitudeval(amp)
         totalcards++;
     }
     
-    outlet (0, total);
+    outlet (1, total);
 }
 */
-
-
 
 function donecards()
 {
@@ -109,11 +107,11 @@ function gotoround(val)
     i[count] = new Array();
 }
 
-function whichround()
+/*function whichround()
 {
     post(count);
     outlet(1, count);
-}
+}*/
 
 function clear()
 {
