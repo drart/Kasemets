@@ -1,3 +1,5 @@
+outlets = 2;
+
 var count = 0;
 var f = {};
 var a = {};

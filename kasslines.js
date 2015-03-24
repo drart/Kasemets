@@ -2,7 +2,7 @@ var sketch = new JitterObject("jit.gl.sketch", "KassWindow");
 var myrender = new JitterObject("jit.gl.render","KassWindow");
 myrender.ortho = 2; 
 myrender.erase_color = [0,0,0,1]; 
-
+sketch.line_width = 2;
 var mydata = {}
 
 var xmin = -0.4;
