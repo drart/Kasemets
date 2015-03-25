@@ -7,9 +7,10 @@ mytext = new JitterObject("jit.gl.text", "KassWindow");
 
 mytext.depth_enable = 0;
 mytext.align=1;
-mytext.fontsize=30;
+mytext.fontsize=50;
 mytext.font("Courier");
 mytext.color=[1.,1.,1.,1.];
+mytext.position=[0.,0.2,0.];
 
 function bang() 
 {
@@ -79,4 +80,3 @@ function whichround()
 {
     post(count);
 }
-
