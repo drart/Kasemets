@@ -29,7 +29,7 @@ function show()
 	{
 		case 0:
 			mytext.text("(1)\nIn BLOCK 1 mark one quantity\nin each of the four COLUMNS\n(FRQ, AMP, COL, INT)");
-            var forcetext = this.patcher.newdefault(0,0,"jit.gl.text");
+            //var forcetext = this.patcher.newdefault(0,0,"jit.gl.text");
 			break;
 		case 1:
 			mytext.text("(2)\nIn BLOCK 2 mark one quantity\nin any one and only one\nof the four columns\n(FRQ, AMP, COL, INT)");
