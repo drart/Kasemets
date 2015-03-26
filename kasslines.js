@@ -3,7 +3,7 @@ var sketch = new JitterObject("jit.gl.sketch", "KassWindow");
 //myrender.ortho = 2; 
 //myrender.erase_color = [0,0,0,1]; 
 sketch.line_width = 2;
-var mydata = {}
+var mydata = {f: 0, a: 0, c: 0, i:0};
 
 var xmin = -0.4;
 var xmax = .4;
@@ -141,6 +141,14 @@ function c(num)
 function erase()
 {
 	sketch.reset();
+}
+
+
+function clear()
+{
+	mydata = {f: 0, a: 0, c: 0, i:0};	
+	
+	redraw();
 }
 
 function random()

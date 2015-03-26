@@ -1,9 +1,6 @@
 var count = 0;
 
 mytext = new JitterObject("jit.gl.text", "KassWindow");
-//var myrender = new JitterObject("jit.gl.render","KassWindow");
-//myrender.ortho = 2; 
-//myrender.erase_color = [0,0,0,1]; 
 
 mytext.depth_enable = 0;
 mytext.align=1;
@@ -12,12 +9,11 @@ mytext.font("Courier");
 mytext.color=[1.,1.,1.,1.];
 mytext.position=[0.,0.2,0.];
 
+
+
+
 function bang() 
 {
-    // rendering block...
-    //myrender.erase(); // erase the drawing context
-   // myrender.drawclients(); // draw the client objects
-    //myrender.swap(); // swap in the new drawing
     outlet(0, "bang");
 }
 
@@ -33,6 +29,7 @@ function show()
 	{
 		case 0:
 			mytext.text("(1)\nIn BLOCK 1 mark one quantity\nin each of the four COLUMNS\n(FRQ, AMP, COL, INT)");
+            var forcetext = this.patcher.newdefault(0,0,"jit.gl.text");
 			break;
 		case 1:
 			mytext.text("(2)\nIn BLOCK 2 mark one quantity\nin any one and only one\nof the four columns\n(FRQ, AMP, COL, INT)");

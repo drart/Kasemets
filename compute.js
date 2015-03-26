@@ -29,33 +29,8 @@ function setfrequencyval(freq)
     {
         sum += ff[t];
     }
-    f[count+"average"] = sum / ff.length;
 
-    var result = sum;
-    switch(count)
-    {
-        case 0: 
-            totalcards++; 
-            break;
-        case 1:
-            result = sum + ( f[0+"average"]*f[0].length ); 
-            break;
-        case 2:
-            result = sum + ( f[1+"average"]*f[1].length ); 
-            break;
-        case 3:
-            result = sum + ( f[2+"average"]*f[2].length ); 
-            break;
-        case 4:
-            result = sum + ( f[3+"average"]*f[3].length ); 
-            break;
-        default: 
-            break; 
-    }
-	post(result);
-    result = result / totalcards;
-
-    outlet (0, result);
+    outlet (0, sum / ff.length);
 }
 
 function setamplitudeval(amp)
@@ -72,30 +47,8 @@ function setamplitudeval(amp)
     {
         sum += aa[t];
     }
-    a[count+"average"] = sum / aa.length;
 
-    var result = sum;
-    switch(count)
-    {
-        case 1:
-            result = sum + ( a[0+"average"]*a[0].length ); 
-            break;
-        case 2:
-            result = sum + ( a[1+"average"]*a[1].length ); 
-            break;
-        case 3:
-            result = sum + ( a[2+"average"]*a[2].length ); 
-            break;
-        case 4:
-            result = sum + ( a[3+"average"]*a[3].length ); 
-            break;
-        default: 
-            break; 
-    }
-	//post(result);
-    result = result / totalcards;
-
-    outlet (1, result);
+    outlet (1, sum / aa.length);
 }
 
 function setcolourval(col)
@@ -112,30 +65,8 @@ function setcolourval(col)
     {
         sum += cc[t];
     }
-    c[count+"average"] = sum / cc.length;
 
-    var result = sum;
-    switch(count)
-    {
-        case 1:
-            result = sum + ( c[0+"average"]*c[0].length ); 
-            break;
-        case 2:
-            result = sum + ( c[1+"average"]*c[1].length ); 
-            break;
-        case 3:
-            result = sum + ( c[2+"average"]*c[2].length ); 
-            break;
-        case 4:
-            result = sum + ( c[3+"average"]*c[3].length ); 
-            break;
-        default: 
-            break; 
-    }
-	//post(result);
-    result = result / totalcards;
-
-    outlet (2, result);
+    outlet (2, sum / cc.length);
 }
 
 function setintensityval(tens)
@@ -152,30 +83,8 @@ function setintensityval(tens)
     {
         sum += ii[t];
     }
-    i[count+"average"] = sum / ii.length;
 
-    var result = sum;
-    switch(count)
-    {
-        case 1:
-            result = sum + ( i[0+"average"]*i[0].length ); 
-            break;
-        case 2:
-            result = sum + ( i[1+"average"]*i[1].length ); 
-            break;
-        case 3:
-            result = sum + ( i[2+"average"]*i[2].length ); 
-            break;
-        case 4:
-            result = sum + ( i[3+"average"]*i[3].length ); 
-            break;
-        default: 
-            break; 
-    }
-	//post(result);
-    result = result / totalcards;
-
-    outlet (3, result);
+    outlet (3, sum/ii.length);
 }
 
 

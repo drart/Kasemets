@@ -1,4 +1,4 @@
-var round = 1;
+var round = 0;
 
 function msg_int(ii)
 {
@@ -24,7 +24,7 @@ function bang()
 
 function start()
 {
-    round = 1;
+    round = 0;
     bang();    
 }
 
